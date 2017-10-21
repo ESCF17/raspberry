@@ -1,0 +1,30 @@
+<!-- 
+Dev : Hugo Pousseur
+
+Param : 
+   pkg_cmd | dist -> distance ultrason accepte en mm | chrono -> Temps en s 
+   pkg_fusee | temps -> temps à partir du quel la fusee peut etre lance	
+-->
+
+<launch>
+	<node pkg="pkg_timer" type="node_timer.py" name="TIMER" /> 
+	<node pkg="pkg_ultrason" type="node_ultrason.py" name="ULTRASON"/>
+	<!--<node pkg="pkg_key" type="node_key.py" name="KEY"/>-->
+	<node pkg="pkg_log" type="node_log_server.py" name="LOG"/>
+	<node pkg="pkg_cmd" type="node_cmd.py" name="CMD">
+		<param name="dist" value="48"/>
+		<param name="chrono" value="90"/>
+	</node>
+	<!--<node pkg="rosserial_python" type="serial_node.py" name="ARD01">
+		<param name="port" value="/dev/ttyACM0" />
+		<param name="baud" value="57600" />
+	</node>-->
+	<!--<node pkg="rosserial_python" type="serial_node.py" name="ARD02">
+                <param name="port" value="/dev/ttyACM1" />
+                <param name="baud" value="57600" />
+        </node>-->
+	<node pkg="pkg_fusee" type="node_fusee.py" name="FUSEE">
+		<param name="temps" value="90"/>
+	</node>
+		
+</launch>

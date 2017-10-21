@@ -1,0 +1,15 @@
+<!--
+	Dev : Hugo Pousseur
+	Rq : chaque distribe/machine définie d'une facon differente les ports serials,
+Merci de faire un petit cd /dev/ pour choper le serial de l'arduino
+-->
+
+
+
+
+<launch>
+	<node pkg="rosserial_python" type="serial_node.py" name="ARD01">
+		<param name="port" value="/dev/ttyACM0" />
+		<param name="baud" value="57600" />
+	</node>		
+</launch>
